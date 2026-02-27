@@ -39,3 +39,21 @@ By changing the color and weight of the outline, we can make the text more reada
 
 Update 10/23/2024:
 Text box shape is filled with a transparent color, so text is more legible against the background image.
+
+
+## Clipboard automation macro
+
+A new macro `ClipboardAutomaton.PasteClipboardToSlides` is available for quick slide text population:
+
+- Reads plain text directly from the clipboard.
+- Applies text using slide style defaults:
+  - Font: `DIN Next LT Arabic`
+  - Size: `22`
+  - Color: `#535353`
+  - Alignment: `Justify Low`
+- If the active slide already has text formatting, that font/size/color is reused.
+- Limits text to **190 characters per slide**. Overflow text is continued on new duplicated slides with the same formatting and layout.
+
+Run the macro from the VBA editor (F5) while your target presentation is open.
+
+To make this click-based, run `ClipboardAutomaton.AddPasteFromClipboardButton` once to add a **Paste from Clipboard** button to the current slide. Clicking that button runs `PasteClipboardToSlides`.
